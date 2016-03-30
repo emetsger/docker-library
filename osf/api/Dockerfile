@@ -17,6 +17,15 @@ RUN apt-get update \
         libssl-dev \
         libffi-dev \
         python-dev \
+        # for debugging and sanity
+        strace \
+        lsof \
+        net-tools \
+        tcpdump \
+        curl \
+        vim \
+        less \
+        iptables \
     && apt-get clean \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
@@ -33,8 +42,6 @@ RUN apt-get update \
   	&& rm /usr/local/bin/gosu.asc \
   	&& chmod +x /usr/local/bin/gosu \
     && apt-get clean \
-    && apt-get autoremove -y \
-        curl \
     && rm -rf /var/lib/apt/lists/*
 
 # Node : https://registry.hub.docker.com/u/library/node/
@@ -53,8 +60,6 @@ RUN apt-get update \
   	&& npm install -g npm@"$NPM_VERSION" \
   	&& npm cache clear \
     && apt-get clean \
-    && apt-get autoremove -y \
-        curl \
     && rm -rf /var/lib/apt/lists/*
 
 ENV SOURCE_BRANCH develop
