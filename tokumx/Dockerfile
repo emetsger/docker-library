@@ -52,7 +52,7 @@ EXPOSE 28017
 # NOTE: While testing the docker container you can override toku's hard requirement
 # for transparent huge page sharing by setting the following environment variable.
 #
-# TOKU_HUGE_PAGES_OK=1
+ENV TOKU_HUGE_PAGES_OK=1
 #
 # Production systems see the following guide detailing how to disable this setting at boot.
 # http://docs.mongodb.org/manual/tutorial/transparent-huge-pages/#in-etc-rc-local-alternate
