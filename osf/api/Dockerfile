@@ -64,7 +64,7 @@ RUN apt-get update \
 
 ENV SOURCE_BRANCH develop
 # ENV SOURCE_BRANCH master
-ENV SOURCE_REPO https://github.com/CenterForOpenScience/osf.io.git
+ENV SOURCE_REPO https://github.com/emetsger/osf.io.git
 ENV WHEELHOUSE /home/.cache/wheelhouse
 ENV DJANGO_SETTINGS_MODULE api.base.settings
 ENV UPDATE_CMD 'invoke clean && invoke wheelhouse --release && invoke requirements --release && gosu www-data invoke assets && gosu www-data python manage.py collectstatic --noinput'
