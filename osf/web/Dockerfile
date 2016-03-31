@@ -90,4 +90,4 @@ ENTRYPOINT ["/entrypoint.sh"]
 EXPOSE 5000
 VOLUME /code
 
-CMD ["invoke", "server"]
+CMD ["invoke", "server", "--host", "0.0.0.0"]
