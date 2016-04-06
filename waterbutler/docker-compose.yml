@@ -19,6 +19,7 @@ web:
   build: '3.5'
   command: 'invoke server'
   environment:
+    - WATERBUTLER_CONFIG=/home/.cos/waterbutler-test.json
 #    - SOURCE_BRANCH=develop
     - SOURCE_REPO=https://github.com/CenterForOpenScience/waterbutler
   ports:
