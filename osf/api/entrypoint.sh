@@ -14,8 +14,6 @@ gosu www-data git fetch -q
 gosu www-data git checkout $SOURCE_BRANCH
 gosu www-data git pull origin $SOURCE_BRANCH
 
-echo "DB_HOST='${TOKUMX_DB_HOST}'" >> website/settings/local.py
-
 # avoid running setup tasks on container restarts
 commit_head=$(git rev-parse HEAD)
 updated=false

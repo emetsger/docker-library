@@ -80,9 +80,6 @@ RUN git clone -b $SOURCE_BRANCH $SOURCE_REPO . \
 RUN invoke wheelhouse --release
 RUN invoke requirements --release
 
-# Set this to the IP of your running MongoDB (tokumx) docker container
-ENV TOKUMX_DB_HOST 172.17.0.2
-
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
