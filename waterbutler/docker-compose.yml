@@ -16,10 +16,10 @@ rabbitmq:
 # Server Containers
 
 web:
-  build: .
+  build: '3.5'
   command: 'invoke server'
   environment:
-    - SOURCE_BRANCH=develop
+#    - SOURCE_BRANCH=develop
     - SOURCE_REPO=https://github.com/CenterForOpenScience/waterbutler
   ports:
     - 7777:7777
