@@ -34,8 +34,9 @@ tokumx:
 
 api:
   tty: true
-  build: ./api
+  # build: ./api
   # image: centerforopenscience/osf:api
+  image: dataconservancy/osf:api-latest
   # command: invoke apiserver --host 0.0.0.0 --port 8000
   environment:
      - SOURCE_BRANCH=develop
@@ -75,8 +76,9 @@ api:
 
 web:
   tty: true
-  build: ./web
-  #image: centerforopenscience/osf:web
+  # build: ./web
+  # image: centerforopenscience/osf:web
+  image: dataconservancy/osf:web-latest
   command: invoke server --host 0.0.0.0 --port 5000
   environment:
      - SOURCE_BRANCH=develop
