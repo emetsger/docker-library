@@ -16,7 +16,7 @@ rabbitmq:
 # Server Containers
 
 web:
-  build: '3.5'
+  build: .
   command: 'invoke server'
   environment:
     - WATERBUTLER_CONFIG=/home/.cos/waterbutler-test.json
