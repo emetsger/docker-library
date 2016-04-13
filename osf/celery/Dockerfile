@@ -98,4 +98,4 @@ ENTRYPOINT ["/entrypoint.sh"]
 VOLUME /code
 VOLUME /celery
 
-CMD ["invoke", "celery_worker"]
+CMD ["invoke", "celery_worker", "--hostname", "0.0.0.0"]
