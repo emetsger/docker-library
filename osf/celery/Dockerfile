@@ -66,7 +66,7 @@ RUN apt-get update \
 
 ENV SOURCE_BRANCH develop
 # ENV SOURCE_BRANCH master
-ENV SOURCE_REPO https://github.com/CenterForOpenScience/osf.io.git
+ENV SOURCE_REPO https://github.com/emetsger/osf.io.git
 ENV WHEELHOUSE /home/.cache/wheelhouse
 ENV UPDATE_CMD 'invoke clean && invoke wheelhouse --metrics --addons && invoke requirements --metrics --addons'
 
