@@ -87,4 +87,7 @@ ENTRYPOINT ["/entrypoint.sh"]
 EXPOSE 5000
 VOLUME /code
 
+RUN chown -R www-data:www-data /home || true
+RUN chown -R www-data:www-data /code || true
+
 CMD ["invoke", "server", "--host", "0.0.0.0"]

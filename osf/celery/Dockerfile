@@ -98,4 +98,8 @@ ENTRYPOINT ["/entrypoint.sh"]
 VOLUME /code
 VOLUME /celery
 
+RUN chown -R www-data:www-data /home || true
+RUN chown -R www-data:www-data /code || true
+RUN chown -R www-data:www-data /celery || true
+
 CMD ["invoke", "celery_worker", "--hostname", "0.0.0.0"]

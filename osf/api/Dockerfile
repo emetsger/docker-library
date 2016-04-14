@@ -92,4 +92,7 @@ ENTRYPOINT ["/entrypoint.sh"]
 EXPOSE 8000
 VOLUME /code
 
+RUN chown -R www-data:www-data /home || true
+RUN chown -R www-data:www-data /code || true
+
 CMD ["invoke", "apiserver", "--host", "0.0.0.0"]

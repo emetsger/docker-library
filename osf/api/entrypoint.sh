@@ -35,6 +35,9 @@ if $updated; then
 fi
 echo "$commit_head" > /tmp/.commit
 
+chown -R www-data:www-data /home || true
+chown -R www-data:www-data /code || true
+
 if [ "$1" = 'invoke' ]; then
     echo "Starting: $@"
     exec gosu www-data "$@"
