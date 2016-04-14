@@ -72,6 +72,8 @@ ENV UPDATE_CMD 'invoke clean && invoke wheelhouse --metrics --addons && invoke r
 
 RUN chmod 600 /etc/crontab
 
+ENV PYTHONIOENCODING utf_8:ignore
+
 RUN pip install -U pip
 
 RUN pip install \
