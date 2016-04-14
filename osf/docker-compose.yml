@@ -21,7 +21,12 @@ tokumx:
   image: centerforopenscience/tokumx:latest
   environment:
     - TOKU_HUGE_PAGES_OK=1
-
+  expose:
+    - 27017
+    - 28017
+  ports:
+    - 27017:27017
+    - 28017:28017
 
 # Server Containers
 
