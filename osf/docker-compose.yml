@@ -102,18 +102,13 @@ web:
   # volumes_from:
   #   - storage
 
-# celery:
-#   build: ./server
-#   command: 'invoke celery_worker'
-#   environment:
-#     - SOURCE_BRANCH=develop
-#     - SOURCE_REPO=https://github.com/CenterForOpenScience/osf.io.git
-#     - UPDATE_CMD="invoke requirements --dev --addons"
-#   links:
-#     - rabbitmq:rabbitmq
-#     - tokumx:tokumx
-##   volumes_from:
-##     - storage
+celery:
+  image: dataconservancy/osf:celery-latest
+  links:
+    - rabbitmq:rabbitmq
+    - tokumx:tokumx
+  volumes:
+    - ./settings/local-docker.py:/code/website/settings/local.py
 
 # celery:
 #   build: ./server
