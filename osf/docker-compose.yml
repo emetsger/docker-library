@@ -28,6 +28,17 @@ tokumx:
     - 27017:27017
     - 28017:28017
 
+fakecas:
+  image: dataconservancy/osf:fakecas
+  expose: 
+    - 8080
+  ports:
+    - 8080:8080
+  privileged: true
+  links:
+    - tokumx:tokumx
+
+
 # Server Containers
 
 
