@@ -32,7 +32,7 @@ web:
     - tmpdata
 
 celery:
-  build: dataconservancy/osf:wb-latest
+  image: dataconservancy/osf:wb-latest
   command: 'invoke celery'
   environment:
     - SOURCE_BRANCH=develop
