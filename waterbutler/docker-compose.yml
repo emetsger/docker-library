@@ -16,12 +16,12 @@ rabbitmq:
 # Server Containers
 
 web:
-  build: .
+  image: dataconservancy/osf:wb-latest
   command: 'invoke server'
   environment:
     - WATERBUTLER_CONFIG=/home/.cos/waterbutler-test.json
 #    - SOURCE_BRANCH=develop
-    - SOURCE_REPO=https://github.com/CenterForOpenScience/waterbutler
+    - SOURCE_REPO=https://github.com/emetsger/waterbutler
   ports:
     - 7777:7777
   expose:
@@ -32,11 +32,11 @@ web:
     - tmpdata
 
 celery:
-  build: .
+  build: dataconservancy/osf:wb-latest
   command: 'invoke celery'
   environment:
     - SOURCE_BRANCH=develop
-    - SOURCE_REPO=https://github.com/CenterForOpenScience/waterbutler
+    - SOURCE_REPO=https://github.com/emetsger/waterbutler
   links:
     - rabbitmq:rabbitmq
   volumes_from:

@@ -58,3 +58,11 @@ USE_CDN_FOR_CLIENT_LIBS = False
 
 # Example of extending default settings
 # defaults.IMG_FMTS += ["pdf"]
+
+CAS_SERVER_URL = 'http://192.168.99.100:8080'
+DOMAIN = 'http://192.168.99.100:5000/'
+API_DOMAIN = 'http://192.168.99.100:8000/'
+WATERBUTLER_URL = 'http://192.168.99.100:7777'
+WATERBUTLER_ADDRS = ['192.168.99.100']
+#DB_HOST = '172.17.0.2'
+#ELASTIC_URI = '172.17.0.3:9200'

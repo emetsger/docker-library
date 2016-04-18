@@ -37,7 +37,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 ENV SOURCE_BRANCH master
-ENV SOURCE_REPO https://github.com/CenterForOpenScience/waterbutler.git
+ENV SOURCE_REPO https://github.com/emetsger/waterbutler.git
 ENV WHEELHOUSE /home/.cache/wheelhouse
 ENV UPDATE_CMD 'invoke wheelhouse && invoke install'
 

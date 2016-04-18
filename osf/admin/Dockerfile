@@ -54,12 +54,13 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-ENV SOURCE_BRANCH feature/admin-app
+ENV SOURCE_BRANCH develop
 # ENV SOURCE_BRANCH master
-ENV SOURCE_REPO https://github.com/CenterForOpenScience/osf.io.git
+ENV SOURCE_REPO https://github.com/emetsger/osf.io.git
 ENV WHEELHOUSE /home/.cache/wheelhouse
 ENV DJANGO_SETTINGS_MODULE admin.base.settings
-ENV UPDATE_CMD 'invoke clean && invoke wheelhouse --release && invoke requirements --release && gosu www-data invoke assets && gosu www-data invoke admin.assets && gosu www-data python manage.py collectstatic --noinput'
+ENV UPDATE_CMD 'invoke clean && invoke wheelhouse --dev --addons && invoke requirements --dev --addons && gosu www-data invoke assets --dev && gosu www-data invoke admin.assets && gosu www-data python manage.py collectstatic --noinput'
+#ENV UPDATE_CMD 'invoke clean && invoke wheelhouse --release && invoke requirements --release && gosu www-data invoke assets && gosu www-data invoke admin.assets && gosu www-data python manage.py collectstatic --noinput'
 
 RUN pip install -U pip
 
@@ -74,8 +75,12 @@ RUN git clone -b $SOURCE_BRANCH $SOURCE_REPO . \
     && cp website/settings/local-dist.py website/settings/local.py \
     && chown -R www-data:www-data /code
 
-RUN invoke wheelhouse --release
-RUN invoke requirements --release
+RUN invoke wheelhouse --dev
+RUN invoke requirements --dev
+
+RUN invoke requirements
+#RUN invoke admin.assets -d
+#RUN invoke admin.manage migrate
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
@@ -84,4 +89,6 @@ ENTRYPOINT ["/entrypoint.sh"]
 EXPOSE 8001
 VOLUME /code
 
-CMD ["invoke", "adminserver"]
+ENV PYTHONIOENCODING utf_8:ignore
+
+CMD ["invoke", "adminserver", "--host", "0.0.0.0"]
