@@ -74,8 +74,12 @@ RUN npm install -g bower \
 
 WORKDIR /code
 
+RUN chmod g+rwx /code && chgrp www-data /code
+
 # perform an initial build to cache long running compilations
-RUN git clone -b $SOURCE_BRANCH $SOURCE_REPO . \
+RUN gosu www-data git clone -b $SOURCE_BRANCH $SOURCE_REPO . \
+    && gosu www-data git config user.email emetsger@jhu.edu \
+    && gosu www-data git config user.name "Elliot Metsger <OSF Web Docker Container>" \
     && cp website/settings/local-dist.py website/settings/local.py \
     && chown -R www-data:www-data /code
 
